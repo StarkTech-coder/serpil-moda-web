@@ -1,16 +1,21 @@
-# serpil_moda_web
+# 👗 Serpil Moda Evi Web 
 
-A new Flutter project.
+A high-performance, modern gallery web application developed for a boutique fashion house based in Bursa, Turkey.
 
-## Getting Started
+## 🚀 Key Features
+- **Cloud-First Architecture:** All media assets are dynamically fetched via Firebase and Google Drive integration.
+- **Responsive Design:** Fully optimized for all screen sizes using Flutter Web's flexible layout engine.
+- **Glassmorphism UI:** Features premium, custom-designed cards for a sleek and modern user experience.
+- **State Management:** Built with Riverpod for a scalable, maintainable, and clean code architecture.
 
-This project is a starting point for a Flutter application.
+## 🛠️ Tech Stack
+- **Frontend:** Flutter (Dart)
+- **Backend:** Firebase Firestore
+- **Animations:** Flutter Animate
+- **State Management:** Riverpod
 
-A few resources to get you started if this is your first Flutter project:
+## 🏗️ Architecture & Development
+This project focuses on bridging local business needs with modern AI-integrated solutions. It utilizes a decoupled architecture where content is managed remotely, allowing for real-time updates without redeploying the application.
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+---
+*Developed by Berk Han Türkoğlu | StarkTech-coder*
