@@ -18,9 +18,9 @@ class GallerySection extends ConsumerWidget {
       padding: const EdgeInsets.symmetric(vertical: 80),
       child: Column(
         children: [
-          // Başlık
+          // Section Title
           const Text(
-            "ÖZEL TASARIM KOLEKSİYONU",
+            "EXCLUSIVE DESIGN COLLECTION",
             style: TextStyle(
               color: AppTheme.gold,
               fontSize: 13,
@@ -31,10 +31,9 @@ class GallerySection extends ConsumerWidget {
 
           const SizedBox(height: 50),
 
-          // Vitrin Bölümü
+          // Showcase Section
           SizedBox(
-            height:
-                600, // Yüksekliği biraz artırdım (Gelinlikler için ideal boy)
+            height: 600, // Optimized height for vertical fashion/dress displays
             child: galleryAsync.when(
               data: (images) {
                 if (images.isEmpty) return const SizedBox.shrink();
@@ -42,7 +41,7 @@ class GallerySection extends ConsumerWidget {
                 return MarqueeGallery(
                   images: images,
                   itemBuilder: (image) => Container(
-                    width: 400, // Genişliği 400 yaparak "orta kıvamı" yakaladık
+                    width: 400, // Balanced width for card items
                     margin: const EdgeInsets.symmetric(horizontal: 15),
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(25),
@@ -56,7 +55,7 @@ class GallerySection extends ConsumerWidget {
                     ),
                     child: ClipRRect(
                       borderRadius: BorderRadius.circular(25),
-                      // AspectRatio veya doğrudan GalleryCard
+                      // Rendering individual GalleryCard within the marquee
                       child: GalleryCard(image: image),
                     ),
                   ),
@@ -65,7 +64,12 @@ class GallerySection extends ConsumerWidget {
               loading: () => const Center(
                 child: CircularProgressIndicator(color: AppTheme.gold),
               ),
-              error: (e, _) => Center(child: Text("Hata: $e")),
+              error: (e, _) => Center(
+                child: Text(
+                  "Error loading gallery: $e",
+                  style: const TextStyle(color: Colors.white54),
+                ),
+              ),
             ),
           ),
         ],

@@ -1,7 +1,7 @@
 // widgets/faq_section.dart
 import 'package:flutter/material.dart';
 
-import '../../../core/theme/app_theme.dart'; // AppTheme'i tanıması için
+import '../../../core/theme/app_theme.dart'; // Required for AppTheme constants
 
 class FAQSection extends StatelessWidget {
   const FAQSection({super.key});

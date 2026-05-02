@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class AppTheme {
-  // Renk Paleti - Serpil Moda Evi Luxury Concept
+  // Color Palette - Serpil Moda Evi Luxury Concept
   static const Color gold = Color(0xFFC5A059);
   static const Color darkGold = Color(0xFF9E7E38);
   static const Color background = Color(0xFF0A0A0A);
@@ -23,7 +23,7 @@ class AppTheme {
         outline: gold,
       ),
       textTheme: TextTheme(
-        // Başlıklar için zarif Playfair Display
+        // Elegant Playfair Display for headings
         displayLarge: GoogleFonts.playfairDisplay(
           fontSize: 72,
           fontWeight: FontWeight.bold,
@@ -40,7 +40,7 @@ class AppTheme {
           fontWeight: FontWeight.w500,
           color: gold,
         ),
-        // Gövde metinleri için modern Montserrat
+        // Modern Montserrat for body content
         bodyLarge: GoogleFonts.montserrat(
           fontSize: 18,
           color: textLight,

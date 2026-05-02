@@ -17,10 +17,11 @@ class ProcessSection extends StatelessWidget {
     return Container(
       padding: const EdgeInsets.symmetric(vertical: 60),
       child: Row(
-        mainAxisAlignment: MainAxisAlignment.center, // Tüm yapıyı ortalar
+        mainAxisAlignment:
+            MainAxisAlignment.center, // Centers the entire structure
         children: [
           for (int i = 0; i < steps.length; i++) ...[
-            // Adım Kartı (İkon ve Yazı)
+            // Step Card (Icon and Text)
             Column(
               children: [
                 Icon(steps[i]['icon'], color: AppTheme.gold, size: 40),
@@ -36,7 +37,7 @@ class ProcessSection extends StatelessWidget {
               ],
             ),
 
-            // Eğer son adım değilse, bir sonraki adıma geçişi temsil eden oku ekle
+            // If it is not the last step, add an arrow icon to represent transition
             if (i < steps.length - 1)
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 30),

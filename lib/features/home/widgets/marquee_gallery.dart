@@ -3,7 +3,7 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 
 class MarqueeGallery extends StatefulWidget {
-  final List<dynamic> images; // GalleryModel veya String listesi
+  final List<dynamic> images; // List of GalleryModel or String
   final Widget Function(dynamic image) itemBuilder;
 
   const MarqueeGallery({
@@ -19,14 +19,15 @@ class MarqueeGallery extends StatefulWidget {
 class _MarqueeGalleryState extends State<MarqueeGallery> {
   late PageController _pageController;
   Timer? _timer;
-  int _currentPage = 1000; // Sonsuz kaydırma hissi için
+  int _currentPage =
+      1000; // Starting at a high index to simulate infinite scrolling
 
   @override
   void initState() {
     super.initState();
     _pageController = PageController(
       initialPage: _currentPage,
-      viewportFraction: 0.75, // Yanlardaki resimlerin görünmesi için
+      viewportFraction: 0.75, // Adjust to show parts of adjacent images
     );
 
     _timer = Timer.periodic(const Duration(seconds: 4), (timer) {
@@ -61,7 +62,7 @@ class _MarqueeGalleryState extends State<MarqueeGallery> {
             double value = 1.0;
             if (_pageController.position.hasContentDimensions) {
               value = (_pageController.page! - index);
-              // Odaktaki büyür, yandaki küçülür (%20 fark)
+              // Scale effect: focused item grows while others shrink (20% difference)
               value = (1 - (value.abs() * 0.20)).clamp(0.0, 1.0);
             }
             return Center(

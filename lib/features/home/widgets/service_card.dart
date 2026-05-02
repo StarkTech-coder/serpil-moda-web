@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
+
 import '../../../core/theme/app_theme.dart';
 import '../../../models/service_model.dart';
 
@@ -12,11 +13,13 @@ class ServiceCard extends StatefulWidget {
 }
 
 class _ServiceCardState extends State<ServiceCard> {
+  // Track hover state for interactive UI effects
   bool isHovered = false;
 
   @override
   Widget build(BuildContext context) {
     return MouseRegion(
+      // Toggle hover state when mouse enters or leaves the region
       onEnter: (_) => setState(() => isHovered = true),
       onExit: (_) => setState(() => isHovered = false),
       child: AnimatedContainer(
@@ -25,10 +28,12 @@ class _ServiceCardState extends State<ServiceCard> {
         margin: const EdgeInsets.all(15),
         decoration: BoxDecoration(
           color: AppTheme.surface,
+          // Highlight border with gold color when hovered
           border: Border.all(
             color: isHovered ? AppTheme.gold : Colors.transparent,
             width: 1,
           ),
+          // Apply a subtle golden glow effect on hover
           boxShadow: [
             if (isHovered)
               BoxShadow(
@@ -41,6 +46,7 @@ class _ServiceCardState extends State<ServiceCard> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
+            // Image section with a backup icon in case of network failure
             Expanded(
               child: Container(
                 width: double.infinity,
@@ -55,6 +61,7 @@ class _ServiceCardState extends State<ServiceCard> {
                 ),
               ),
             ),
+            // Service details: Title and a short description
             Padding(
               padding: const EdgeInsets.all(20),
               child: Column(
@@ -81,6 +88,9 @@ class _ServiceCardState extends State<ServiceCard> {
           ],
         ),
       ),
-    ).animate().fadeIn(duration: 600.ms).slideY(begin: 0.1);
+    )
+        .animate()
+        .fadeIn(duration: 600.ms)
+        .slideY(begin: 0.1); // Smooth entrance animation
   }
 }

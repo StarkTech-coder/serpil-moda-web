@@ -15,6 +15,7 @@ class GoogleMapSection extends StatelessWidget {
   Widget build(BuildContext context) {
     const String viewID = 'google-maps-view';
 
+    // Registering a web view factory for the Google Maps iframe
     // ignore: undefined_prefixed_name
     ui.platformViewRegistry.registerViewFactory(
       viewID,
@@ -22,7 +23,7 @@ class GoogleMapSection extends StatelessWidget {
         final web.HTMLIFrameElement iframe = web.HTMLIFrameElement()
           ..width = '100%'
           ..height = '100%'
-          // ✅ API KEY YOK → ÜCRETSİZ EMBED
+          // Using Google Maps Embed (No API Key required for this method)
           ..src =
               'https://www.google.com/maps?q=Serpil+Salas+Moda+ve+Dikim+Evi+Mudanya+Bursa&output=embed'
           ..style.border = 'none';
@@ -34,7 +35,7 @@ class GoogleMapSection extends StatelessWidget {
     return Column(
       children: [
         const Text(
-          "BİZE ULAŞIN",
+          "CONTACT US",
           style: TextStyle(
             color: AppTheme.gold,
             fontSize: 13,
@@ -46,12 +47,13 @@ class GoogleMapSection extends StatelessWidget {
         const SizedBox(height: 10),
 
         const Text(
-          "Atölyemizi Ziyaret Edin",
+          "Visit Our Atelier",
           style: TextStyle(color: Colors.white70, fontSize: 16),
         ),
 
         const SizedBox(height: 40),
 
+        // Map container with custom golden glow effect and rounded corners
         Container(
           height: 450,
           width: double.infinity,
@@ -85,7 +87,7 @@ class GoogleMapSection extends StatelessWidget {
 
         const SizedBox(height: 20),
 
-        // 🔥 BONUS: YOL TARİFİ BUTONU
+        // Quick directions button that opens Google Maps in a new tab
         ElevatedButton.icon(
           onPressed: () {
             web.window.open(
@@ -94,7 +96,7 @@ class GoogleMapSection extends StatelessWidget {
             );
           },
           icon: const Icon(Icons.directions),
-          label: const Text("Yol Tarifi Al"),
+          label: const Text("Get Directions"),
           style: ElevatedButton.styleFrom(
             backgroundColor: AppTheme.gold,
             foregroundColor: Colors.black,

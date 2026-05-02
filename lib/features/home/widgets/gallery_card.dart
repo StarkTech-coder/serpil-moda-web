@@ -27,6 +27,7 @@ class GalleryCard extends StatelessWidget {
     );
   }
 
+  // Handles both asset and network images with error/loading placeholders
   Widget _buildImage() {
     if (image.isAsset) {
       return Image.asset(
@@ -41,8 +42,8 @@ class GalleryCard extends StatelessWidget {
         image.imageUrl,
         fit: BoxFit.cover,
         errorBuilder: (context, error, stackTrace) {
-          // print yerine debugPrint kullanarak o mavi uyarıyı sildik:
-          debugPrint("Resim yükleme hatası: $error");
+          // Using debugPrint instead of print to follow best practices and avoid lint warnings
+          debugPrint("Image loading error: $error");
           return _buildErrorPlaceholder();
         },
         loadingBuilder: (context, child, loadingProgress) {
@@ -53,6 +54,7 @@ class GalleryCard extends StatelessWidget {
     }
   }
 
+  // Shows a dark container with a progress indicator while loading
   Widget _buildLoadingPlaceholder() {
     return Container(
       color: Colors.grey[900],
@@ -64,6 +66,7 @@ class GalleryCard extends StatelessWidget {
     );
   }
 
+  // Displays a fallback icon if the image fails to load
   Widget _buildErrorPlaceholder() {
     return Container(
       color: Colors.grey[900],

@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart'; // Instagram ikonu için
+import 'package:font_awesome_flutter/font_awesome_flutter.dart'; // Required for Instagram icon
 import 'package:url_launcher/url_launcher.dart';
 
 import '../../../core/theme/app_theme.dart';
 import '../provider/service_provider.dart';
-import '../widgets/faq_section.dart'; // YENİ
+import '../widgets/faq_section.dart';
 import '../widgets/gallery_section.dart';
 import '../widgets/google_map_section.dart';
-import '../widgets/process_section.dart'; // YENİ
+import '../widgets/process_section.dart';
 
 class HomeScreen extends ConsumerStatefulWidget {
   const HomeScreen({super.key});
@@ -22,6 +22,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
   final GlobalKey _koleksiyonKey = GlobalKey();
   final GlobalKey _hizmetlerKey = GlobalKey();
 
+  // Handles smooth scrolling to specific sections using GlobalKeys
   void _scrollToSection(GlobalKey key) {
     WidgetsBinding.instance.addPostFrameCallback((_) {
       final context = key.currentContext;
@@ -36,10 +37,11 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
     });
   }
 
+  // Opens WhatsApp with a pre-filled template message
   void _launchWhatsApp() async {
     const phone = "905439255608";
     const message =
-        "Merhaba, Serpil Moda Evi web sitenizden ulaşıyorum. Bilgi ve randevu almak istiyorum.";
+        "Hello, I am contacting you from the Serpil Moda Evi website. I would like to get information and book an appointment.";
     final url =
         Uri.parse("https://wa.me/$phone?text=${Uri.encodeComponent(message)}");
     if (await canLaunchUrl(url)) {
@@ -47,10 +49,9 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
     }
   }
 
-  // Instagram yönlendirmesi için fonksiyon
+  // Redirects the user to the official Instagram profile
   void _launchInstagram() async {
-    final url = Uri.parse(
-        "https://www.instagram.com/serpilmodaevi_bursa"); // Gerçek linki buraya yazarsın
+    final url = Uri.parse("https://www.instagram.com/serpilmodaevi_bursa");
     if (await canLaunchUrl(url)) {
       await launchUrl(url, mode: LaunchMode.externalApplication);
     }
@@ -66,24 +67,24 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
         onPressed: _launchWhatsApp,
         backgroundColor: const Color(0xFF25D366),
         icon: const Icon(Icons.chat, color: Colors.white),
-        label: const Text("Bilgi & Randevu",
+        label: const Text("Info & Appointment",
             style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold)),
       ).animate().scale(delay: 2.seconds),
       appBar: AppBar(
         backgroundColor: Colors.black.withValues(alpha: 0.6),
         elevation: 0,
         title: const Text(
-          'SERPİL MODA EVİ',
+          'SERPIL MODA EVI',
           style: TextStyle(
               fontWeight: FontWeight.bold,
               letterSpacing: 4,
               color: AppTheme.gold),
         ).animate().fadeIn(duration: 800.ms),
         actions: [
-          _navButton("KOLEKSİYON", () => _scrollToSection(_koleksiyonKey)),
-          _navButton("HİZMETLERİMİZ", () => _scrollToSection(_hizmetlerKey)),
-          _navButton("İLETİŞİM", _launchWhatsApp),
-          // Instagram İkonu
+          _navButton("COLLECTION", () => _scrollToSection(_koleksiyonKey)),
+          _navButton("SERVICES", () => _scrollToSection(_hizmetlerKey)),
+          _navButton("CONTACT", _launchWhatsApp),
+          // Instagram Social Icon
           IconButton(
             icon: const Icon(FontAwesomeIcons.instagram,
                 color: AppTheme.gold, size: 20),
@@ -98,28 +99,28 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
             _buildHeroSection(context),
             _buildAboutSection(context),
 
-            // 1. KOLEKSİYON BÖLÜMÜ
+            // 1. COLLECTION SECTION
             GallerySection(key: _koleksiyonKey),
 
             const SizedBox(height: 80),
 
-            // 2. SÜREÇ BÖLÜMÜ (NASIL ÇALIŞIYORUZ?)
+            // 2. PROCESS SECTION (HOW WE WORK)
             const ProcessSection(),
 
             const SizedBox(height: 100),
 
-            // 3. HİZMETLER BÖLÜMÜ
+            // 3. SERVICES SECTION
             _buildServicesHeader(context),
             _buildServicesSection(context, servicesAsync),
 
             const SizedBox(height: 80),
 
-            // 4. SSS BÖLÜMÜ (SIKÇA SORULAN SORULAR)
+            // 4. FAQ SECTION (FREQUENTLY ASKED QUESTIONS)
             const FAQSection(),
 
             const SizedBox(height: 100),
 
-            // 5. HARİTA VE İLETİŞİM
+            // 5. MAP AND CONTACT DETAILS
             const GoogleMapSection(),
 
             const SizedBox(height: 120),
@@ -129,7 +130,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
     );
   }
 
-  // --- Widget Metotları (Hero, About, Services vb.) aynı kalıyor ---
+  // --- Widget Methods (Hero, About, Services etc.) ---
 
   Widget _navButton(String title, VoidCallback onTap) {
     return TextButton(
@@ -154,7 +155,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Text("Usta Ellerde\nKişiye Özel Zarafet",
+          Text("Tailored Elegance\nin Master Hands",
               style: Theme.of(context)
                   .textTheme
                   .displayLarge
@@ -167,7 +168,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                 padding:
                     const EdgeInsets.symmetric(horizontal: 50, vertical: 25)),
             onPressed: () => _scrollToSection(_koleksiyonKey),
-            child: const Text("KOLEKSİYONU KEŞFET",
+            child: const Text("DISCOVER COLLECTION",
                 style: TextStyle(color: AppTheme.gold)),
           ).animate(delay: 1.seconds).fadeIn(),
         ],
@@ -182,14 +183,14 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
       color: Colors.black.withValues(alpha: 0.2),
       child: Column(
         children: [
-          const Text("TERZİLİK SANATI",
+          const Text("THE ART OF TAILORING",
               style: TextStyle(
                   color: AppTheme.gold, fontSize: 13, letterSpacing: 6)),
           const SizedBox(height: 25),
           ConstrainedBox(
             constraints: const BoxConstraints(maxWidth: 850),
             child: Text(
-              "Serpil Moda Evi olarak, kumaşa ruh katan usta ellerimizle 20 yılı aşkın süredir hikayenizi dikiyoruz. Sadece bir kıyafet değil, özgüveninizi ve zarafetinizi yansıtan eşsiz birer eser ortaya çıkarmak için her dikişte titizlikle çalışıyoruz.",
+              "As Serpil Moda Evi, we have been stitching your stories for over 20 years with master hands that breathe soul into the fabric. We work meticulously at every stitch to create unique masterpieces that reflect your self-confidence and elegance.",
               textAlign: TextAlign.center,
               style: TextStyle(
                   color: Colors.white.withValues(alpha: 0.8),
@@ -210,11 +211,11 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
     return Column(
       key: _hizmetlerKey,
       children: [
-        const Text("ERKEK & KADIN TERZİ SANATI",
+        const Text("MEN & WOMEN TAILORING ART",
             style: TextStyle(
                 color: AppTheme.gold, fontSize: 13, letterSpacing: 5)),
         const SizedBox(height: 15),
-        Text("Kişiye Özel Kesim, Kusursuz Form",
+        Text("Bespoke Cutting, Perfect Form",
             textAlign: TextAlign.center,
             style: Theme.of(context)
                 .textTheme
@@ -224,7 +225,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
         const Padding(
           padding: EdgeInsets.symmetric(horizontal: 20),
           child: Text(
-            "Atölyemizde hem erkek hem kadın giyiminde klasik terzilik disiplinini modern tasarımlarla birleştiriyoruz.",
+            "In our atelier, we combine classical tailoring discipline with modern designs in both men's and women's clothing.",
             textAlign: TextAlign.center,
             style: TextStyle(color: Colors.white60, fontSize: 16),
           ),
@@ -239,7 +240,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
       data: (services) {
         if (services.isEmpty) {
           return const Center(
-            child: Text("Hizmetler yükleniyor...",
+            child: Text("Loading services...",
                 style: TextStyle(color: Colors.white54)),
           );
         }
@@ -263,13 +264,17 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
             IconData serviceIcon = Icons.design_services_outlined;
             String titleLower = service.title.toLowerCase();
 
-            if (titleLower.contains("takım")) {
+            // Assign icons based on service categories
+            if (titleLower.contains("takım") || titleLower.contains("suit")) {
               serviceIcon = Icons.straighten;
-            } else if (titleLower.contains("abiye")) {
+            } else if (titleLower.contains("abiye") ||
+                titleLower.contains("dress")) {
               serviceIcon = Icons.auto_awesome;
-            } else if (titleLower.contains("tadilat")) {
+            } else if (titleLower.contains("tadilat") ||
+                titleLower.contains("repair")) {
               serviceIcon = Icons.content_cut;
-            } else if (titleLower.contains("koleksiyon")) {
+            } else if (titleLower.contains("koleksiyon") ||
+                titleLower.contains("collection")) {
               serviceIcon = Icons.checkroom;
             }
 
@@ -332,7 +337,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
           const Center(child: CircularProgressIndicator(color: AppTheme.gold)),
       error: (err, stack) => Center(
           child:
-              Text('Hata: $err', style: const TextStyle(color: Colors.white))),
+              Text('Error: $err', style: const TextStyle(color: Colors.white))),
     );
   }
 }

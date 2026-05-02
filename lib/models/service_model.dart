@@ -13,7 +13,7 @@ class ServiceModel {
     this.price = 0.0,
   });
 
-  // Firestore'dan gelen veriyi modele dönüştürür
+  // Converts Firestore document data into a ServiceModel instance
   factory ServiceModel.fromFirestore(Map<String, dynamic> json, String id) {
     return ServiceModel(
       id: id,
@@ -24,7 +24,7 @@ class ServiceModel {
     );
   }
 
-  // Gerekirse veriyi Map formatına dönüştürür
+  // Converts the model back into a Map format for Firestore storage
   Map<String, dynamic> toFirestore() {
     return {
       'title': title,
