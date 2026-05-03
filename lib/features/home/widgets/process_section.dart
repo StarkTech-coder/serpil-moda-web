@@ -8,10 +8,10 @@ class ProcessSection extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final List<Map<String, dynamic>> steps = [
-      {'icon': Icons.calendar_month_outlined, 'title': 'Randevu'},
-      {'icon': Icons.straighten_outlined, 'title': 'Ölçü Alımı'},
-      {'icon': Icons.auto_fix_high_outlined, 'title': 'Prova'},
-      {'icon': Icons.card_giftcard_outlined, 'title': 'Teslimat'},
+      {'icon': Icons.calendar_month_outlined, 'title': 'Appointment'},
+      {'icon': Icons.straighten_outlined, 'title': 'Measurement'},
+      {'icon': Icons.auto_fix_high_outlined, 'title': 'Fitting'},
+      {'icon': Icons.card_giftcard_outlined, 'title': 'Delivery'},
     ];
 
     return Container(

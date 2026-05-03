@@ -12,13 +12,13 @@ class FAQSection extends StatelessWidget {
       padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 40),
       child: Column(
         children: [
-          const Text("SIKÇA SORULAN SORULAR",
+          const Text("FREQUENTLY ASKED QUESTIONS",
               style: TextStyle(color: AppTheme.gold, letterSpacing: 3)),
           const SizedBox(height: 20),
-          _buildFAQTile("Özel dikim ne kadar sürer?",
-              "Tasarımın karmaşıklığına göre 2-4 hafta arası sürmektedir."),
-          _buildFAQTile("Tadilat yapıyor musunuz?",
-              "Evet, her türlü abiye ve gelinlik tadilatı uzman ellerde yapılmaktadır."),
+          _buildFAQTile("How long does custom tailoring take?",
+              "Depending on the complexity of the design, it takes between 2-4 weeks."),
+          _buildFAQTile("Do you offer alterations?",
+              "Yes, all kinds of evening dress and wedding dress alterations are performed by expert hands."),
         ],
       ),
     );
