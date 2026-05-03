@@ -2,32 +2,50 @@
 <html>
 
 <head>
+  <!-- Ensures correct routing for the Flutter application -->
   <base href="$FLUTTER_BASE_HREF">
 
   <meta charset="UTF-8">
   <meta content="IE=Edge" http-equiv="X-UA-Compatible">
-  <meta name="description" content="Serpil Moda Evi - Kişiye Özel Tasarım ve Lüks Terzilik">
 
+  <!-- Site description for Search Engine Optimization (SEO) -->
+  <meta name="description" content="Serpil Moda Evi - Bespoke Design and Luxury Tailoring">
+
+  <!-- CRITICAL: Ensures the site fits perfectly on mobile screens and prevents accidental zooming -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+  <!-- Configuration for the web app to behave like a native 'App' on mobile devices -->
   <meta name="mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
   <meta name="apple-mobile-web-app-title" content="Serpil Moda">
-  <link rel="apple-touch-icon" href="icons/Icon-192.png">
 
+  <!-- App icons and favicon -->
+  <link rel="apple-touch-icon" href="icons/Icon-192.png">
   <link rel="icon" type="image/png" href="favicon.png" />
 
+  <!-- Title appearing in the browser tab -->
   <title>Serpil Moda Evi</title>
+
+  <!-- Manifest file for PWA (Progressive Web App) features -->
   <link rel="manifest" href="manifest.json">
 
   <script>
+    /* 
+       Using 'html' renderer for Flutter Web: 
+       Provides smoother performance and better SEO compatibility, 
+       especially on low-end mobile devices.
+    */
     window.flutterWebRenderer = "html";
   </script>
 
+  <!-- Firebase Services: Libraries for real-time data fetching and media management -->
   <script src="https://www.gstatic.com/firebasejs/10.11.0/firebase-app-compat.js"></script>
   <script src="https://www.gstatic.com/firebasejs/10.11.0/firebase-firestore-compat.js"></script>
   <script src="https://www.gstatic.com/firebasejs/10.11.0/firebase-storage-compat.js"></script>
 </head>
 
 <body>
+  <!-- Main script that bootstraps the Flutter application -->
   <script src="flutter_bootstrap.js" async></script>
 </body>
 
