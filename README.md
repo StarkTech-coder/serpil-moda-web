@@ -1,4 +1,5 @@
 # 👗 Serpil Moda Evi Web 
+![App Preview](assets/screenshots/preview.png)
 
 A high-performance, modern gallery web application developed for a boutique fashion house based in Bursa, Turkey.
 
